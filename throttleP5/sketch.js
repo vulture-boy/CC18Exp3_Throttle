@@ -43,6 +43,105 @@ function draw() {
 	
 	// STUB: replace example code
 	
+	// Game State: Start Screen, Transition to Game, 3 to GO, Game, Finish, Results, Start Screen
+	
+	// Setup
+		// PRELOAD: import images
+		// Carts
+		// Character (2)
+			// Revving
+			// Driving (3 positions)
+			// Throwing (3)
+			// Overheat / Hit (3)
+			// Victory (on podium)
+		// Signs
+			// 3 / 2 / 1 / GO!
+			// MISS (throw)
+			// Finish
+			// Title
+		// Misc
+			// Confetti
+			// Podium
+			// Throttle / Speed / Item slot / Needle
+			// Finish line
+			// Obstacle
+			// Items
+			// Terrain
+			// Speed Lines?
+			// Smoke
+			// Thrown items
+			
+		// Sounds
+			// BGM (title, gameplay, results)
+			// finish sound
+			// Revving
+			// bleeps for light
+			// item get
+			// item toss 
+			// guy hit
+			// smoking 
+			// overheat warning
+			// overheat hit 
+	
+	// Start Screen
+		// Title Bobble
+		// Press Start
+		// Trigger Start when both players press a button
+		// Could have game running in the background: show drivers ready to go disregarding trottle state
+		
+	// Transition
+		// Effect: 
+			// Blow up Title?
+			// (temp: disappear)
+		// Draw race line, throttle meters, item slot
+		// Pull down 3/2/1/GO counter
+		
+	// 3 to GO
+		// 3/2/1/GO!
+		// rev sounds active now!
+	
+	// Game
+		// Blink GO! sign multiple times before making it disappear (on off on off on off gone)
+		// Go at speed of throttle.
+		// Speed: easing!!
+			// Throttle position * speed factor = target speed
+			// Acceleration factor: current += delta(target, current) * accel
+			// Overheat: directly correlated to throttle position: if above threshold, increase * delta(position, threshold)
+				// Decrease overheat based on same delta.
+			// Visual display... animated lines, background colour, fading? cart bobbing speed.
+			// Track current distance vs target distance on display down middle
+		// Overheat based on speed (only increases after midspeed)
+			// Stop item / obstacle spawn (& ignore them)
+			// If overheat target met, blink overheat, have decrease slowly to zero (slow to stop twice as fast)
+			// Once clear, accelerate again!
+		// tilt left or right to avoid obstacle, grab item (based on thresholds)
+			// hitbox region moves with tilt for 3 different positions
+		// Item / Obstacles grow and follow path, bob up and down slightly, disappear at certain y val, caught in certain y threshold. 
+			// Just random spawn to keep it simple, maybe spawn faster if moving faster.
+			// three lanes
+		// Obstacle: cuts speed down
+		// Tossing: must be at similar speed or MISS (with "MISS" sign)
+		// Item: Nitro
+			// USE: Increase speed temporarially
+			// THROW: Increase overheat
+		// Item: Cooler
+			// USE: Decrease overheat
+			// Throw: Decrease speed
+		// Item: Shield
+			// USE: Prevent damage from one obstacle
+			// THROW: Temp blindness
+		
+	// Finish
+		// Part of Game, display FINISH when passing through, have player shrink away to item spawn position and disappear.
+		// After a certain amount of time, move to results
+		
+	// Results
+		// Confetti (just flip a few drawings back and forth, generate from top)
+		// First and second place on stands
+		// After certain amount of time, reset game
+	
+	
+	
 	// Cycle through players
 	for (i=0; i<players;i++) {
 		background(255);
