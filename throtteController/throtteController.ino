@@ -3,7 +3,7 @@
  * by Tyson Moll
  * 
  * References:
- * Ultrasonic Tutorial by Rui Santos
+ * Ultrasonic Tutorial by Rui Santos, https://randomnerdtutorials.com
  * C&C18 JSON Input Demo by Nick Puckett and Kate Hartman
  */
 #include <ArduinoJson.h>
