@@ -19,9 +19,21 @@ serialPortName[1] = "COM14"; // Controller #2
 // STUB: Auto-detection for controllers
 var serial[players];       //variable to hold the serial port object
 
+function preload() {
+	/*
+	img_go = loadImage('');
+	img_count_3 = loadImage('');
+	img_count_2 = loadImage('');
+	img_count_1 = loadImage('');
+	*/
+}
+
 function setup() {
   
-	createCanvas(500,500);
+	var canv = createCanvas(windowWidth,windowHeight);
+	canv.position(0,0);
+	fr = 30; // Frames per second 
+	frameRate(fr); 
 	// STUB: adjust according to needs
 
 	//Setting up the serial port
@@ -37,6 +49,15 @@ function setup() {
 		
 		// STUB: virtually duplicate methods (need a way to determine which serial is used)
 	}
+	
+	game_state = 0; // Active game 'screen'
+	
+	// GS 2: Countdown
+	timeCounter = 0; // Tracks time for state 2
+	readyStart = fr * 1 // Time until display messages
+	readyEnd = fr * 3; // Time to display 'Ready?' message
+	goEnd = fr * 2; // Time to display 'GO!!'
+	
 }
 
 function draw() {
@@ -44,6 +65,24 @@ function draw() {
 	// STUB: replace example code
 	
 	// Game State: Start Screen, Transition to Game, 3 to GO, Game, Finish, Results, Start Screen
+	
+	if (game_state == 0) {
+		// STUB: Title
+	} else if (game_state == 1) {
+		// STUB: Transition to start
+	} else if (game_state == 2) {
+		// STUB: 3 / 2/ 1 / GO
+		textAlign(CENTER);
+		
+		if (counter >= readyStart && counter < readyStart + readyEnd) {
+			text('READY?',windowWidth/2,windowHeight/8);
+		
+		counter++;
+	} else if (game_state == 3) {
+		// STUB: GAME 
+	} else if (game_state == 4) {
+		// STUB: Results 
+	}
 	
 	// Setup
 		// PRELOAD: import images
@@ -200,4 +239,7 @@ function ardCon() {
 	console.log("connected to the arduino!! Listen UP");
 }
 
+function windowResized() { // Triggered when window is resized
+	resizeCanvas(windowWidth,windowHeight);
+}
 
